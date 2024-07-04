@@ -20,7 +20,7 @@ if ! command_exists xmonad; then
     fi
 fi
 
-echo "This will DELETE your XMONAD DOTFILES."
+echo "This MIGHT DELETE your XMONAD DOTFILES."
 echo "Do you wish to continue? (y/n)"
 
 read -r response
