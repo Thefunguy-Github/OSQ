@@ -43,7 +43,7 @@ then
 
     # Download dotfiles from a git repository
     # Replace 'YOUR_REPO_URL' with the actual URL of your dotfiles repository
-    git clone YOUR_REPO_URL /tmp/xmonad-dotfiles
+    git clone https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
 
     # Copy files to appropriate locations
     cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
