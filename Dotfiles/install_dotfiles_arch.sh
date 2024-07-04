@@ -4,7 +4,6 @@
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-
 # Check if XMonad is installed
 if ! command_exists xmonad; then
     echo "XMonad is not installed on this system."
