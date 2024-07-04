@@ -1,62 +1,63 @@
-#!/bin/bash
-
-# Function to check if a command exists
-command_exists() {
-    command -v "$1" >/dev/null 2>&1
-}
-# Check if XMonad is installed
-if ! command_exists xmonad; then
-    echo "XMonad is not installed on this system."
-    echo "Would you like to install XMonad? (y/n)"
-    read -r install_response
-    if [[ "$install_response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        echo "Installing XMonad..."
-        sudo apt update
-        sudo apt install xmonad libghc-xmonad-contrib-dev xmobar
-    else
-        echo "XMonad installation skipped. Exiting script."
-        exit 1
-    fi
-fi
-
-echo "This MIGHT DELETE your XMONAD DOTFILES."
-echo "Do you wish to continue? (y/n)"
-
-read -r response
-
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    echo "Proceeding with installation..."
-
-    # Create necessary directories
-    mkdir -p ~/.xmonad
-    mkdir -p ~/.config/xmobar
-
-    # Backup existing files
-    if [ -f ~/.xmonad/xmonad.hs ]; then
-        mv ~/.xmonad/xmonad.hs ~/.xmonad/xmonad.hs.bak
-    fi
-    if [ -f ~/.config/xmobar/xmobarrc ]; then
-        mv ~/.config/xmobar/xmobarrc ~/.config/xmobar/xmobarrc.bak
-    fi
-
-    # Download dotfiles from a git repository
-    # Replace 'YOUR_REPO_URL' with the actual URL of your dotfiles repository
-    git clone https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
-
-    # Copy files to appropriate locations
-    cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
-    cp /tmp/xmonad-dotfiles/xmobarrc ~/.config/xmobar/
-
-    # Clean up
-    rm -rf /tmp/xmonad-dotfiles
-
-    # Compile XMonad
-    xmonad --recompile
-
-    echo "Installation complete!"
-    echo "Please restart XMonad for changes to take effect."
-
-else
-    echo "Installation cancelled."
-fi
+1  #!/bin/bash
+2
+3  # Function to check if a command exists
+4  command_exists() {
+5      command -v "$1" >/dev/null 2>&1
+6  }
+7
+8  # Check if XMonad is installed
+9  if ! command_exists xmonad; then
+10     echo "XMonad is not installed on this system."
+11     echo "Would you like to install XMonad? (y/n)"
+12     read -r install_response
+13     if [[ "$install_response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+14         echo "Installing XMonad..."
+15         sudo apt update
+16         sudo apt install xmonad libghc-xmonad-contrib-dev xmobar
+17     else
+18         echo "XMonad installation skipped. Exiting script."
+19         exit 1
+20     fi
+21 fi
+22
+23 echo "This MIGHT DELETE your XMONAD DOTFILES."
+24 echo "Do you wish to continue? (y/n)"
+25
+26 read -r response
+27
+28 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+29 then
+30     echo "Proceeding with installation..."
+31
+32     # Create necessary directories
+33     mkdir -p ~/.xmonad
+34     mkdir -p ~/.config/xmobar
+35
+36     # Backup existing files
+37     if [ -f ~/.xmonad/xmonad.hs ]; then
+38         mv ~/.xmonad/xmonad.hs ~/.xmonad/xmonad.hs.bak
+39     fi
+40     if [ -f ~/.config/xmobar/xmobarrc ]; then
+41         mv ~/.config/xmobar/xmobarrc ~/.config/xmobar/xmobarrc.bak
+42     fi
+43
+44     # Download dotfiles from a git repository
+45     # Replace 'YOUR_REPO_URL' with the actual URL of your dotfiles repository
+46     git clone https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
+47
+48     # Copy files to appropriate locations
+49     cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
+50     cp /tmp/xmonad-dotfiles/xmobarrc ~/.config/xmobar/
+51
+52     # Clean up
+53     rm -rf /tmp/xmonad-dotfiles
+54
+55     # Compile XMonad
+56     xmonad --recompile
+57
+58     echo "Installation complete!"
+59     echo "Please restart XMonad for changes to take effect."
+60
+61 else
+62     echo "Installation cancelled."
+63 fi
