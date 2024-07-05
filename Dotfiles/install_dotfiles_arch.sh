@@ -12,8 +12,8 @@
 12     read -r install_response
 13     if [[ "$install_response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 14         echo "Installing XMonad..."
-15         sudo apt update
-16         sudo apt install xmonad libghc-xmonad-contrib-dev xmobar
+15         sudo pacman -Syu
+16         sudo pacman -S xmonad libghc-xmonad-contrib-dev xmobar
 17     else
 18         echo "XMonad installation skipped. Exiting script."
 19         exit 1
