@@ -19,44 +19,34 @@ if ! command_exists xmonad; then
        exit 1
     fi
 fi
-22
-23 echo "This MIGHT DELETE your XMONAD DOTFILES."
-24 echo "Do you wish to continue? (y/n)"
-25
-26 read -r response
-27
-28 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-29 then
-30     echo "Proceeding with installation..."
-31
-32     # Create necessary directories
-33     mkdir -p ~/.xmonad
-34     mkdir -p ~/.config/xmobar
-35
-36     # Backup existing files
-37     if [ -f ~/.xmonad/xmonad.hs ]; then
-38         mv ~/.xmonad/xmonad.hs ~/.xmonad/xmonad.hs.bak
-39     fi
-40     if [ -f ~/.config/xmobar/xmobarrc ]; then
-41         mv ~/.config/xmobar/xmobarrc ~/.config/xmobar/xmobarrc.bak
-42     fi
-43
-44     # Download dotfiles from a git repository
-46     wget https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
-47
-48     # Copy files to appropriate locations
-49     cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
-50     cp /tmp/xmonad-dotfiles/xmobarrc ~/.config/xmobar/
-51
-52     # Clean up
-53     rm -rf /tmp/xmonad-dotfiles
-54
-55     # Compile XMonad
-56     xmonad --recompile
-57
-58     echo "Installation complete!"
-59     echo "Please restart XMonad for changes to take effect."
-60
-61 else
-62     echo "Installation cancelled."
-63 fi
+
+echo "This MIGHT DELETE your XMONAD DOTFILES."
+echo "Do you wish to continue? (y/n)"
+read -r response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    echo "Proceeding with installation..."
+    # Create necessary directories
+    mkdir -p ~/.xmonad
+    mkdir -p ~/.config/xmobar
+    # Backup existing files
+    if [ -f ~/.xmonad/xmonad.hs ]; then
+        mv ~/.xmonad/xmonad.hs ~/.xmonad/xmonad.hs.bak
+    fi
+    if [ -f ~/.config/xmobar/xmobarrc ]; then
+        mv ~/.config/xmobar/xmobarrc ~/.config/xmobar/xmobarrc.bak
+    fi
+    # Download dotfiles from a git repository
+    wget https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
+    # Copy files to appropriate locations
+    cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
+    cp /tmp/xmonad-dotfiles/xmobarrc ~/.config/xmobar/
+    # Clean up
+    rm -rf /tmp/xmonad-dotfiles
+    # Compile XMonad
+    xmonad --recompile
+    echo "Installation complete!"
+    echo "Please restart XMonad for changes to take effect."
+else
+    echo "Installation cancelled."
+fi
