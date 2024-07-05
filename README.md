@@ -21,7 +21,7 @@ OSQ (Operating System QEMU) is a Linux distribution that uses the power of QEMU 
 - 
 ### Installation
 
-1. Download the OSQ ISO from our [releases page](https://github.com/yourusername/OSQ/releases)
+1. Download the OSQ ISO from our [releases page](https://github.com/thefunguy-github/OSQ/releases)
 2. Create a bootable USB drive using tools like Etcher or Rufus
 3. Boot your system from the USB drive
 4. Follow the on-screen instructions to install OSQ
