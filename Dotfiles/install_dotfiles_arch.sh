@@ -37,7 +37,7 @@ then
         mv ~/.config/xmobar/xmobarrc ~/.config/xmobar/xmobarrc.bak
     fi
     # Download dotfiles from a git repository
-    wget https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
+    wget https://raw.githubusercontent.com/Thefunguy-Github/OSQ/main/Dotfiles/xmonad.hs -O /tmp/xmonad-dotfiles/xmonad.hs
     # Copy files to appropriate locations
     cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
     cp /tmp/xmonad-dotfiles/xmobarrc ~/.config/xmobar/
