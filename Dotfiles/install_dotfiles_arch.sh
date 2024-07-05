@@ -1,24 +1,24 @@
-1  #!/bin/bash
-2
-3  # Function to check if a command exists
-4  command_exists() {
-5      command -v "$1" >/dev/null 2>&1
-6  }
-7
-8  # Check if XMonad is installed
-9  if ! command_exists xmonad; then
-10     echo "XMonad is not installed on this system."
-11     echo "Would you like to install XMonad? (y/n)"
-12     read -r install_response
-13     if [[ "$install_response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-14         echo "Installing XMonad..."
-15         sudo pacman -Syu
-16         sudo pacman -S xmonad libghc-xmonad-contrib-dev xmobar
-17     else
-18         echo "XMonad installation skipped. Exiting script."
-19         exit 1
-20     fi
-21 fi
+#!/bin/bash
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Check if XMonad is installed
+if ! command_exists xmonad; then
+    echo "XMonad is not installed on this system."
+    echo "Would you like to install XMonad? (y/n)"
+    read -r install_response
+    if [[ "$install_response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+       echo "Installing XMonad..."
+       sudo pacman -Syu
+       sudo pacman -S xmonad libghc-xmonad-contrib-dev xmobar
+    else
+       echo "XMonad installation skipped. Exiting script."
+       exit 1
+    fi
+fi
 22
 23 echo "This MIGHT DELETE your XMONAD DOTFILES."
 24 echo "Do you wish to continue? (y/n)"
@@ -42,8 +42,7 @@
 42     fi
 43
 44     # Download dotfiles from a git repository
-45     # Replace 'YOUR_REPO_URL' with the actual URL of your dotfiles repository
-46     git clone https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
+46     wget https://github.com/Thefunguy-Github/OSQ/blob/main/Dotfiles/xmonad.hs /tmp/xmonad-dotfiles
 47
 48     # Copy files to appropriate locations
 49     cp /tmp/xmonad-dotfiles/xmonad.hs ~/.xmonad/
