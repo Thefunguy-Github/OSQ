@@ -17,7 +17,7 @@ OSQ (Operating System QEMU) is a Linux distribution that uses the power of QEMU 
 ### System Requirements
 
 - Any x86_64 AMD-V or Intel VT-X cpu
-- 566 MB of ram
+- 1074 MB of ram
 - 
 ### Installation
 
