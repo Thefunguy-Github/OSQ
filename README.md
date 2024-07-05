@@ -28,7 +28,7 @@ OSQ (Operating System QEMU) is a Linux distribution that uses the power of QEMU 
 
 ## Usage
 
-After installation, you can start creating and managing virtual machines through our intuitive GUI or via the command line. Refer to our [documentation](https://docs.osq.example.com) for detailed instructions.
+After installation, you can start creating and managing virtual machines through our intuitive GUI or via the command line. Refer to our [documentation](https://github.com/Thefunguy-Github/OSQ/wiki) for detailed instructions.
 
 ## Contribution
 
